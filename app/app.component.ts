@@ -1,13 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { PostService } from './post.service';
 import { Post } from './post';
-
-const POSTS: Post[] = [
-  { id: 1, title: 'Post 1 title', content:'Blog post 1 content is here!',rating:0 },
-  { id: 2, title: 'Post 2 title', content:'Blog post 2 content is here!',rating:0 },
-  { id: 3, title: 'Post 3 title', content:'Blog post 3 content is here!',rating:0 },
-  { id: 4, title: 'Post 4 title', content:'Blog post 4 content is here!',rating:0 },
-];
 
 @Component({
   selector: 'my-app',
@@ -71,12 +65,23 @@ const POSTS: Post[] = [
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-  `]
+  `],
+  providers:[PostService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'My Blog';
-  posts = POSTS;
+  posts: Post[];
   selectedPost: Post;
+
+  constructor(private postService: PostService) { }
+
+  getPosts() {
+    this.postService.getPosts().then(posts => this.posts = posts);
+  }
+
+  ngOnInit() {
+    this.getPosts();
+  }
 
   onSelect(post: Post) { this.selectedPost = post; }
 }
