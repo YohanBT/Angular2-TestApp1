@@ -16,6 +16,15 @@ var PostService = (function () {
     PostService.prototype.getPosts = function () {
         return Promise.resolve(mock_posts_1.POSTS);
     };
+    PostService.prototype.getTopPosts = function () {
+        var posts = mock_posts_1.POSTS;
+        posts.sort(function (a, b) { return b.rating - a.rating; });
+        return Promise.resolve(posts.slice(0, 4));
+    };
+    PostService.prototype.getPost = function (id) {
+        return this.getPosts()
+            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
+    };
     PostService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

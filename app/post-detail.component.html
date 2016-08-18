@@ -1,0 +1,8 @@
+<div *ngIf="post">
+    <h2>{{post.title}} details!</h2>
+        <div>
+            <label>Content:  </label><br> {{post.content}}<br>
+            <label>Rating: </label> {{post.rating}}
+        </div>
+    <button (click)="goBack()">Back</button>
+</div>

@@ -3,16 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
 import { AppComponent }  from './app.component';
+import { PostsComponent }  from './posts.component';
+import { PostService } from './post.service';
 import { PostDetailComponent } from './post-detail.component';
+import { DashboardComponent } from './dashboard.component';
+import { routing } from './app.routing';
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    routing,
   ],
   declarations: [
     AppComponent,
-    PostDetailComponent
+    PostsComponent,
+    PostDetailComponent,
+    DashboardComponent,
+  ],
+  providers:[
+    PostService
   ],
   bootstrap: [ AppComponent ]
 })

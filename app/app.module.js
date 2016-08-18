@@ -12,7 +12,11 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
+var posts_component_1 = require('./posts.component');
+var post_service_1 = require('./post.service');
 var post_detail_component_1 = require('./post-detail.component');
+var dashboard_component_1 = require('./dashboard.component');
+var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -20,11 +24,17 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                app_routing_1.routing,
             ],
             declarations: [
                 app_component_1.AppComponent,
-                post_detail_component_1.PostDetailComponent
+                posts_component_1.PostsComponent,
+                post_detail_component_1.PostDetailComponent,
+                dashboard_component_1.DashboardComponent,
+            ],
+            providers: [
+                post_service_1.PostService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
